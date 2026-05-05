@@ -56,6 +56,7 @@
 │   │   ├── shunta.md / iris.md / mika.md / takuma.md / bugmaru.md / monaka.md
 │   └── storyline/             ← 大外プロット
 │       ├── README.md          ← 大方針・運用ルール
+│       ├── direction.md       ← 物語の方向性（テーマ / NG / モナカ影響）
 │       ├── seasons/           ← シーズンごとの詳細プロット
 │       │   ├── s1-digilab-hajimeru.md
 │       │   ├── s2-ai-to-tsukuru.md

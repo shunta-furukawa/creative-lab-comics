@@ -87,6 +87,10 @@ created: YYYY-MM-DD
 
 - 完成版を **`cover.png`** として `episodes/NNNN-slug/` 直下に置く
 - 解像度・縦横比は SNS 投稿前提で決める（縦長推奨）
+- ChatGPT images で生成する場合は [`./image-prompts/`](./image-prompts/) のプロンプト集を使う
+  - リファレンス画像（キャラ立ち絵 / ラボ内装）は **初回のみ** 生成して `assets/` に保存
+  - フレーム画像（コマ割りテンプレ）も **初回のみ** 生成して `assets/concept/frames/` に保存
+  - 各エピソードは「リファレンス + フレーム + シナリオ」の合成プロンプトで生成
 
 ## 6. レビュー
 

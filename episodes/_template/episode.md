@@ -83,3 +83,5 @@ continues_from: ~       # 前話の id（連作の場合のみ）
   - `シュンタ「セリフ」` のような書き方は **避ける**（吹き出しに「」ごと描かれる）
 - リズム / 緩急の作り方: [`../../design-system/rhythm.md`](../../design-system/rhythm.md)
 - カラーパレット: [`../../design-system/color-palette.md`](../../design-system/color-palette.md)
+- **合成プロンプトのテンプレ + リファレンス / フレーム の使い方**:
+  [`../../meta/image-prompts/README.md`](../../meta/image-prompts/README.md)

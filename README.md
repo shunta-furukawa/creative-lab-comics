@@ -92,7 +92,11 @@
 │
 ├── meta/                      ← 制作論・運用ドキュメント
 │   ├── workflow.md            ← 制作フロー（ネタ → 公開まで）
-│   └── repo-structure.md      ← リポジトリ構造の説明
+│   ├── repo-structure.md      ← リポジトリ構造の説明
+│   └── image-prompts/         ← 画像生成プロンプト（フレーム / リファレンス）
+│       ├── README.md
+│       ├── references.md
+│       └── frames.md
 │
 └── .github/                   ← Issue / PR テンプレート
 ```

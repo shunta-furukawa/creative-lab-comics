@@ -17,13 +17,19 @@
 episodes/
 ├── README.md
 ├── _template/                 ← 新規エピソード用テンプレ
-│   └── episode.md
+│   ├── episode.md             ← 脚本・コマ割り・メモのテンプレ
+│   └── compose.md             ← 画像生成プロンプトのテンプレ (コピペ用)
 └── NNNN-slug/
     ├── episode.md             ← 脚本・コマ割り・メモ
+    ├── compose.md             ← ChatGPT に丸ごとコピペで投げるプロンプト
     ├── cover.png              ← 完成版 1 枚画像（SNS 投稿用）
     └── work/                  ← ネーム / 下書き（任意・公開しなくてよい）
         └── sketch-*.png
 ```
+
+> **`compose.md` の役割**: フレーム + キャラ refs を ChatGPT に添付した上で、
+> このファイルを **丸ごとコピペで貼るだけ** で 1 話ぶんの画像が生成できる。
+> 元テンプレ: [`../meta/image-prompts/episode/composition.md`](../meta/image-prompts/episode/composition.md)
 
 ### 命名ルール
 
@@ -62,15 +68,18 @@ front matter に必ず入れる。連載構造はこれで束ねる。
 
 ```bash
 cp -r episodes/_template episodes/0001-your-slug
-# episode.md を編集 → コマ数決定 → ネーム → 清書 → cover.png を置く
+# episode.md を編集 → compose.md のシナリオ部分を埋める
+# → ネーム → 清書 (or compose.md を ChatGPT に投げて生成) → cover.png を置く
 ```
 
 詳しいフローは [`../meta/workflow.md`](../meta/workflow.md) を参照。
 
 ## 一覧
 
-| 番号 | タイトル | season | arc | status |
-| ---- | -------- | ------ | --- | ------ |
-| -    | -        | -      | -   | -      |
-
-> 仕切り直し直後のため空。最初の話を作ったらここに追記する。
+| 番号 | スラッグ                  | タイトル                              | season | arc        | status |
+| ---- | ------------------------- | ------------------------------------- | ------ | ---------- | ------ |
+| 0001 | monaka-asa-no-sanpo       | 朝の散歩、いつもの儀式                 | S1     | standalone | draft  |
+| 0002 | iris-kidou                | コーヒーが鳴ると、アイリスが起きる    | S1     | standalone | draft  |
+| 0003 | design-battle             | それ、ダサくない？                    | S1     | main       | draft  |
+| 0004 | bugmaru-houga             | コードの隅で、何かが動いた             | S1     | bugmaru    | draft  |
+| 0005 | atode-yaru                | 「あとで」の塔                         | S1     | standalone | draft  |

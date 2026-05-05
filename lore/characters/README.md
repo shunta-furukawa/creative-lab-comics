@@ -1,12 +1,13 @@
 # 登場キャラクター
 
-| ID         | 名前       | 役割              | プロフィール                         |
-| ---------- | ---------- | ----------------- | ------------------------------------ |
-| `shunta`   | Shunta     | 主宰 / エンジニア  | [shunta.md](./shunta.md)             |
-| `iris`     | アイリス   | AI アシスタント   | [iris.md](./iris.md)                 |
-| `mika`     | ミカ       | デザイナー        | [mika.md](./mika.md)                 |
-| `takuma`   | タクマ     | プロデューサー    | [takuma.md](./takuma.md)             |
-| `bugmaru`  | バグまる   | バグの化身        | [bugmaru.md](./bugmaru.md)           |
+| ID         | 名前       | 役割                  | プロフィール                         |
+| ---------- | ---------- | --------------------- | ------------------------------------ |
+| `shunta`   | シュンタ   | 主宰 / エンジニア     | [shunta.md](./shunta.md)             |
+| `iris`     | アイリス   | AI アシスタント       | [iris.md](./iris.md)                 |
+| `mika`     | ミカ       | デザイナー            | [mika.md](./mika.md)                 |
+| `takuma`   | タクマ     | プロデューサー        | [takuma.md](./takuma.md)             |
+| `bugmaru`  | バグまる   | バグの化身            | [bugmaru.md](./bugmaru.md)           |
+| `monaka`   | モナカ     | 愛犬 / ラボの癒し担当 | [monaka.md](./monaka.md)             |
 
 > 各キャラがどういう経緯でデジラボに参画したかは [`../origin.md`](../origin.md) を参照。
 > 関係性のマップは [`../relationships.md`](../relationships.md) を参照。

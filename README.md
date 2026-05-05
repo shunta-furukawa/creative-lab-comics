@@ -1,18 +1,16 @@
 # Shuntaのクリエイティブラボ日記 📓
 
-> 16 コマ（4 シート × 4 コマ）で届ける、つくる人の毎日と小さな発見。
+> 1 枚で 1 話。コマ数は自由。つくる人の毎日と小さな発見を、1 枚にまとめて届ける。
 
 エンジニア / クリエイター「**Shunta**」の日常を描くショート連続漫画シリーズ
 **「Shuntaのクリエイティブラボ日記」** の制作・設定管理リポジトリです。
 
-**1 話 = 4 シート × 4 コマ = 全 16 コマ**。X 投稿時はシートを 4 枚画像で添付します。
+**1 話 = 画像 1 枚**。コマ数はネタごとに最適化（1 コマ〜可変）。
+1 枚の中で必ず 1 回オチをつけるのが唯一の制約です。
 
 このリポジトリは、漫画というアウトプットを継続的に作っていくための
 **「世界観・キャラクター・デザイン・ネタ・ワークフロー」をまるごと GitHub で管理する**
 というアプローチの個人実験 / サンプル・テンプレートを兼ねています。
-
-> 💡 このリポジトリ自体が「漫画制作を GitHub で管理する方法」を紹介する
-> Zenn 記事の題材にもなっています。
 
 ---
 
@@ -21,9 +19,9 @@
 漫画を続けていくうえで、次のような "見えにくい裏側" がどんどん増えていきます。
 
 - 🌏 世界観・舞台設定（どこで起きている話なのか）
-- 👥 キャラクターの性格・口ぐせ・関係図
+- 👥 キャラクターの性格・口ぐせ・関係図・成長アーク
 - 🎨 配色やシェイプなどのデザインシステム
-- 📐 起承転結のリズム設計
+- 📐 1 枚の中の緩急設計
 - 💡 ネタ帳・エピソードのバックログ
 - 🛠 制作ワークフロー（下書き → 清書 → 投稿）
 
@@ -35,9 +33,7 @@
 4. **誰かと共作するときに引き継ぎコストが激減**する
 
 > **公開ペース**: 毎日連載はしません。
-> Zenn の記事 + 関連話をまとめた **テーマリリース** と、軽い
-> あるあるネタの **単発 1 話（16 コマ）リリース** の 2 種類を、
-> 出せるときに出す運用です。詳細は [`docs/workflow.md`](./docs/workflow.md) を参照。
+> 出せるときに出す運用です。詳細は [`meta/workflow.md`](./meta/workflow.md) を参照。
 
 ---
 
@@ -46,47 +42,58 @@
 ```
 .
 ├── README.md                  ← このファイル
-├── docs/                      ← 世界観・コンセプト・ワークフローなど "メタ" な設定
-│   ├── world.md               ← 世界観・舞台「デジラボ」
-│   ├── concept.md             ← コアコンセプト・物語テーマ
-│   ├── relationships.md       ← 人間関係マップ
-│   ├── origin.md              ← デジラボ起源とメンバー参画ストーリー
-│   ├── storyline.md           ← 大外プロット（シーズン制 + バグまる長期伏線）
-│   └── workflow.md            ← 制作フロー（ネタ → 公開まで）
 │
-├── characters/                ← 登場キャラのプロフィール（1 ファイル 1 人）
-│   ├── README.md              ← キャラ一覧
-│   ├── shunta.md              ← 主宰 / エンジニア
-│   ├── iris.md                ← アイリス（AI アシスタント）
-│   ├── mika.md                ← ミカ（デザイナー）
-│   ├── takuma.md              ← タクマ（プロデューサー）
-│   └── bugmaru.md             ← バグまる（バグの化身）
+├── lore/                      ← "世界" の設定資料
+│   ├── README.md              ← コアコンセプト（入り口）
+│   ├── world.md               ← 世界観・舞台「デジラボ」と周辺世界
+│   ├── origin.md              ← デジラボ起源とメンバー参画ストーリー
+│   ├── timeline.md            ← 年表（ラボ設立〜現在〜未来）
+│   ├── lexicon.md             ← 用語集（固有名詞・造語）
+│   ├── relationships.md       ← 人間関係マップ
+│   ├── characters/            ← 登場キャラのプロフィール（1 ファイル 1 人）
+│   │   ├── README.md
+│   │   ├── _template.md
+│   │   ├── shunta.md / iris.md / mika.md / takuma.md / bugmaru.md
+│   └── storyline/             ← 大外プロット
+│       ├── README.md          ← 大方針・運用ルール
+│       ├── seasons/           ← シーズンごとの詳細プロット
+│       │   ├── s1-digilab-hajimeru.md
+│       │   ├── s2-ai-to-tsukuru.md
+│       │   ├── s3-release-no-saki-ni.md
+│       │   └── s4-kyozon-no-hajimari.md
+│       └── arcs/              ← 縦軸の長期伏線アーク
+│           └── bugmaru.md
 │
 ├── design-system/             ← ビジュアル統一のためのルール
 │   ├── README.md
 │   ├── color-palette.md       ← カラーパレット
 │   ├── shapes-and-lines.md    ← シェイプ・ライン
 │   ├── motifs.md              ← よく出てくるモチーフ
-│   └── rhythm.md              ← リズム設計（4 シート × 4 コマ）
+│   ├── speech-bubbles.md      ← 吹き出し / セリフのルール
+│   └── rhythm.md              ← 1 枚の中の緩急設計（コマ数自由）
 │
-├── articles/                  ← Zenn 記事（テーマリリースの起点）
-│
-├── episodes/                  ← 各話の脚本・ネーム・公開メモ
-│   ├── README.md              ← エピソード索引
-│   └── _template.md           ← 新規エピソード用テンプレ (4 シート × 4 コマ)
+├── episodes/                  ← 各話（1 話 = 1 フォルダ = 1 画像）
+│   ├── README.md
+│   ├── _template/             ← 新規エピソード用テンプレ
+│   │   └── episode.md
+│   └── NNNN-slug/
+│       ├── episode.md         ← 脚本・コマ割り・メモ
+│       ├── cover.png          ← 完成版 1 枚画像（SNS 投稿用）
+│       └── work/              ← ネーム / 下書き（任意）
 │
 ├── ideas/                     ← ネタ帳・バックログ
 │   ├── README.md
 │   └── backlog.md
 │
-├── assets/                    ← 画像素材（キャラ立ち絵・シート・素材）
-│   ├── characters/
-│   ├── episodes/              ← NNNN/ 配下に sheet-1.png 〜 sheet-4.png
-│   └── concept/
+├── assets/                    ← キャラ立ち絵・コンセプトボード
+│   ├── characters/            ← キャラ別の立ち絵・表情差分
+│   └── concept/               ← コンセプト・ムードボード
+│
+├── meta/                      ← 制作論・運用ドキュメント
+│   ├── workflow.md            ← 制作フロー（ネタ → 公開まで）
+│   └── repo-structure.md      ← リポジトリ構造の説明
 │
 └── .github/                   ← Issue / PR テンプレート
-    ├── ISSUE_TEMPLATE/
-    └── PULL_REQUEST_TEMPLATE.md
 ```
 
 ---
@@ -94,16 +101,16 @@
 ## 使い方の流れ（運用イメージ）
 
 1. **ネタを思いついたら** → `ideas/backlog.md` に 1 行追加 or Issue を立てる
-2. **エピソードに昇格させたい** → `episodes/_template.md` をコピーして
-   `episodes/NNNN-slug.md` を作成、4 シート × 4 コマ（全 16 コマ）を埋める
-3. **下書き / ネーム** → `assets/episodes/NNNN/sheet-1.png 〜 sheet-4.png` に画像を置き、
-   エピソード Markdown からリンク
-4. **完成・投稿** → エピソードの `status` を `published` に更新し、SNS の
-   投稿 URL をメモしておく
-5. **キャラ設定が変わった** → 該当の `characters/*.md` を編集して PR
+2. **エピソードに昇格させたい** → `cp -r episodes/_template episodes/NNNN-your-slug`
+   `episode.md` でコマ数と構成を決める（ネタ最適）
+3. **ネーム / 下書き** → `episodes/NNNN-your-slug/work/` に配置
+4. **完成・投稿** → 完成版を `cover.png` として置き、`status: published` に更新、SNS 投稿 URL を front matter にメモ
+5. **キャラ設定が変わった** → 該当の `lore/characters/*.md` を編集して PR
 
 > Issue はネタ帳、PR は "原稿レビュー"、Projects はカンバンとして使うと、
 > エンジニアの普段使いのツールがそのまま漫画制作のワークフローになります。
+
+詳しいフローは [`meta/workflow.md`](./meta/workflow.md) を参照。
 
 ---
 

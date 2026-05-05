@@ -52,13 +52,15 @@ flowchart TB
 ## ⓪ マスター画像 (最初に 1 回だけ生成)
 
 これがすべての出発点。リファレンス / フレームの **トンマナ統一の基準**。
+**両マスターともダークモード基調** (黒背景 + ネオンピンク・白アクセント) で統一する。
 
 | ファイル                                                    | 内容                                          | 出力サイズ | 保存先                                    |
 | ----------------------------------------------------------- | --------------------------------------------- | ---------- | ----------------------------------------- |
-| [`masters/frame-master.md`](./masters/frame-master.md)         | フレーム用デザインシステムボード              | 1024×1536 | `assets/concept/masters/frame-master.png`     |
-| [`masters/reference-master.md`](./masters/reference-master.md) | リファレンス用デザインシステムボード          | 1024×1536 | `assets/concept/masters/reference-master.png` |
+| [`masters/frame-master.md`](./masters/frame-master.md)         | フレーム用デザインシステムボード (ダーク)     | 1024×1536 | `assets/concept/masters/frame-master.png`     |
+| [`masters/reference-master.md`](./masters/reference-master.md) | リファレンス用デザインシステムボード (ダーク) | 1024×1536 | `assets/concept/masters/reference-master.png` |
 
 > **入力画像は不要** (これらが最上流のマスター)。プロンプトを貼るだけで生成できる。
+> **黒背景 ≠ 暗い内容**: キャンバスは黒だが、中身はピンクや白で鮮やかに描く。
 
 ---
 

@@ -134,6 +134,7 @@ GitHub の Milestone をシーズンに対応させる:
 
 ## 関連ドキュメント
 
+- [物語の方向性 (direction)](./direction.md) ← **書き手の羅針盤**（テーマ / NG / モナカ影響）
 - [世界観](../world.md)
 - [起源・参画ストーリー](../origin.md)
 - [年表](../timeline.md)

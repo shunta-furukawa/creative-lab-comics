@@ -80,6 +80,6 @@ continues_from: ~       # 前話の id（連作の場合のみ）
 - コマ数は本ファイルの「構成設計」に書いた数に合わせる
 - 吹き出し / セリフのルール: [`../../design-system/speech-bubbles.md`](../../design-system/speech-bubbles.md)
   - `話者:` `吹き出し:` `キャラ名タグ:` の形式で各コマを書く
-  - `Shunta「セリフ」` のような書き方は **避ける**（吹き出しに「」ごと描かれる）
+  - `シュンタ「セリフ」` のような書き方は **避ける**（吹き出しに「」ごと描かれる）
 - リズム / 緩急の作り方: [`../../design-system/rhythm.md`](../../design-system/rhythm.md)
 - カラーパレット: [`../../design-system/color-palette.md`](../../design-system/color-palette.md)

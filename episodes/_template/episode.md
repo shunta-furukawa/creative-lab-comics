@@ -83,5 +83,8 @@ continues_from: ~       # 前話の id（連作の場合のみ）
   - `シュンタ「セリフ」` のような書き方は **避ける**（吹き出しに「」ごと描かれる）
 - リズム / 緩急の作り方: [`../../design-system/rhythm.md`](../../design-system/rhythm.md)
 - カラーパレット: [`../../design-system/color-palette.md`](../../design-system/color-palette.md)
-- **合成プロンプトのテンプレ + リファレンス / フレーム の使い方**:
+- **合成プロンプト (毎話使う)**:
+  [`../../meta/image-prompts/episode/composition.md`](../../meta/image-prompts/episode/composition.md)
+  を開いてシナリオ部分を埋め、ChatGPT に貼り付ける
+- **リファレンス / フレームの一覧**:
   [`../../meta/image-prompts/README.md`](../../meta/image-prompts/README.md)

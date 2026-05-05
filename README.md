@@ -93,10 +93,11 @@
 ├── meta/                      ← 制作論・運用ドキュメント
 │   ├── workflow.md            ← 制作フロー（ネタ → 公開まで）
 │   ├── repo-structure.md      ← リポジトリ構造の説明
-│   └── image-prompts/         ← 画像生成プロンプト（フレーム / リファレンス）
-│       ├── README.md
-│       ├── references.md
-│       └── frames.md
+│   └── image-prompts/         ← 画像生成プロンプト（コピペで使える形式）
+│       ├── README.md          ← 索引
+│       ├── references/        ← キャラ・内装のリファレンス（初回 1 回）
+│       ├── frames/            ← コマ割りフレーム（初回 1 回）
+│       └── episode/           ← エピソード合成テンプレ（毎話）
 │
 └── .github/                   ← Issue / PR テンプレート
 ```

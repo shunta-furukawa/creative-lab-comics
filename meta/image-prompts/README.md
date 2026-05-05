@@ -1,131 +1,133 @@
 # 画像生成プロンプト集 (Image Prompts)
 
-> ChatGPT images (gpt-image) で漫画 1 枚を生成するときの **入力素材** を作るためのプロンプト集。
-> 想定モデル: ChatGPT 上の画像生成 (images 2.0 / gpt-image-1)。
+> ChatGPT images (gpt-image) で漫画 1 枚を生成するためのプロンプト。
+> **各ファイルは自己完結している** — 開いて全選択 → コピー → ChatGPT に貼るだけ。
 
-## ファイル構成
+## TL;DR (使い方 3 ステップ)
 
-| ファイル                       | 内容                                                |
-| ------------------------------ | --------------------------------------------------- |
-| [`README.md`](./README.md)     | 全体の運用フロー + ベーススタイル（共通プリアンブル）|
-| [`references.md`](./references.md) | キャラ立ち絵 / ラボ内装 / 小道具のリファレンス画像生成プロンプト |
-| [`frames.md`](./frames.md)     | コマ割りフレーム（空白パネルテンプレ）の生成プロンプト |
+1. 下の表からファイルを 1 つ選ぶ
+2. **ファイルを丸ごとコピー** (中身全部)
+3. ChatGPT に貼り付けて画像を生成 → 指定の保存先に保存
 
-## 全体ワークフロー
-
-```mermaid
-flowchart LR
-    A[1. リファレンス画像を生成<br/>references.md] --> C
-    B[2. フレーム画像を生成<br/>frames.md] --> C
-    C[3. エピソード合成プロンプト<br/>下記テンプレ参照] --> D[ChatGPT images]
-    D --> E[エピソード 1 枚画像]
-```
-
-1. **リファレンス画像** をすべて生成して `assets/characters/` `assets/concept/` に保存（**初回 1 回**）
-2. **フレーム画像** を必要なコマ数ぶん生成して `assets/concept/frames/` に保存（**初回 1 回**）
-3. **エピソードごと** に、リファレンス + フレームを **入力画像として添付** し、シナリオを合成プロンプトで指示
-
-> `assets/concept/` の中に `frames/` `style-guide/` などのサブディレクトリを切ると整理しやすい。
+複数の入力画像をまとめて使うのは **エピソード合成プロンプト** だけ。
+それ以外は 1 ファイル = 1 プロンプト = 1 画像出力で完結する。
 
 ---
 
-## ベーススタイル（共通プリアンブル）
+## ① リファレンス画像 (初回 1 回だけ生成)
 
-**すべての画像生成プロンプトの先頭に貼り付ける** 共通スタイル指示。
-リファレンス画像 / フレーム / 本番エピソード、どれを生成するときも先頭に置く。
+キャラクターやラボ内装の "正" を決める画像。
+**初回に 1 回ずつ全部生成** して `assets/` に保存しておけば、後はずっと使い回せる。
+
+| ファイル                                                      | 内容                              | 出力サイズ | 保存先                                          |
+| ------------------------------------------------------------- | --------------------------------- | ---------- | ----------------------------------------------- |
+| [`references/01-char-shunta.md`](./references/01-char-shunta.md)     | シュンタのモデルシート             | 1536×1024 | `assets/characters/shunta/ref-sheet.png`        |
+| [`references/02-char-iris.md`](./references/02-char-iris.md)         | アイリスのモデルシート             | 1536×1024 | `assets/characters/iris/ref-sheet.png`          |
+| [`references/03-char-mika.md`](./references/03-char-mika.md)         | ミカのモデルシート                 | 1536×1024 | `assets/characters/mika/ref-sheet.png`          |
+| [`references/04-char-takuma.md`](./references/04-char-takuma.md)     | タクマのモデルシート               | 1536×1024 | `assets/characters/takuma/ref-sheet.png`        |
+| [`references/05-char-monaka.md`](./references/05-char-monaka.md)     | モナカのモデルシート               | 1536×1024 | `assets/characters/monaka/ref-sheet.png`        |
+| [`references/06-char-bugmaru.md`](./references/06-char-bugmaru.md)   | バグまるのモデルシート             | 1536×1024 | `assets/characters/bugmaru/ref-sheet.png`       |
+| [`references/07-lab-interior-wide.md`](./references/07-lab-interior-wide.md) | ラボ内装ワイドショット (5 ゾーン)  | 1536×1024 | `assets/concept/lab-interior-wide.png`          |
+| [`references/08-lab-floor-plan.md`](./references/08-lab-floor-plan.md)       | ラボの俯瞰フロアプラン             | 1024×1024 | `assets/concept/lab-floor-plan.png`             |
+| [`references/09-style-guide.md`](./references/09-style-guide.md)             | 色 / 線 / 吹き出しのスタイルボード | 1024×1536 | `assets/concept/style-guide.png`                |
+| [`references/10-motif-catalog.md`](./references/10-motif-catalog.md)         | モチーフ・小道具のカタログ         | 1024×1536 | `assets/concept/motif-catalog.png`              |
+
+---
+
+## ② フレーム画像 (初回 1 回だけ生成)
+
+エピソードの "コマ割りの土台" になる空白フレーム画像。
+**よく使うフォーマットだけ生成** すれば OK (全部作る必要はない)。
+
+| ファイル                                                          | コマ数 / 配置             | 出力サイズ | 保存先                                          |
+| ----------------------------------------------------------------- | ------------------------- | ---------- | ----------------------------------------------- |
+| [`frames/1koma-portrait.md`](./frames/1koma-portrait.md)         | 1 コマ・縦長              | 1024×1536 | `assets/concept/frames/1koma-portrait.png`      |
+| [`frames/2koma-portrait.md`](./frames/2koma-portrait.md)         | 2 コマ縦                  | 1024×1536 | `assets/concept/frames/2koma-portrait.png`      |
+| [`frames/3koma-portrait.md`](./frames/3koma-portrait.md)         | 3 コマ縦                  | 1024×1536 | `assets/concept/frames/3koma-portrait.png`      |
+| [`frames/4koma-portrait.md`](./frames/4koma-portrait.md)         | **4 コマ縦古典 (推奨)**   | 1024×1536 | `assets/concept/frames/4koma-portrait.png`      |
+| [`frames/6koma-grid.md`](./frames/6koma-grid.md)                 | 6 コマ 2×3 グリッド        | 1024×1536 | `assets/concept/frames/6koma-grid.png`          |
+| [`frames/9koma-grid.md`](./frames/9koma-grid.md)                 | 9 コマ 3×3 グリッド        | 1024×1536 | `assets/concept/frames/9koma-grid.png`          |
+| [`frames/freeform-a.md`](./frames/freeform-a.md)                 | 不定形 A (大ゴマ + 小 3)   | 1024×1536 | `assets/concept/frames/freeform-a.png`          |
+| [`frames/freeform-b.md`](./frames/freeform-b.md)                 | 不定形 B (縦 2 + 大ゴマ)   | 1024×1536 | `assets/concept/frames/freeform-b.png`          |
+| [`frames/1koma-square.md`](./frames/1koma-square.md)             | 1 コマ正方形 (Instagram)   | 1024×1024 | `assets/concept/frames/1koma-square.png`        |
+| [`frames/4koma-landscape.md`](./frames/4koma-landscape.md)       | 4 コマ横長 (プレゼン用)    | 1536×1024 | `assets/concept/frames/4koma-landscape.png`     |
+
+> **最初は `4koma-portrait.md` だけ作っておけば十分**。
+> 必要になったら他のフレームを足す。
+
+---
+
+## ③ エピソード合成 (毎話やる)
+
+各エピソードを生成するときに使う。
+
+[`episode/composition.md`](./episode/composition.md)
+
+ファイルを開いて、下半分の **「シナリオ」セクション** を該当エピソードの内容で埋める。
+ChatGPT に **このプロンプト + 入力画像 (フレーム + キャラ refs + 必要に応じて内装)** を一緒に渡す。
+
+---
+
+## ネタとフレームの目安
+
+| ネタの性質                       | おすすめフレーム                     |
+| -------------------------------- | ------------------------------------ |
+| 状況 1 枚で笑わせる              | `1koma-portrait` / `1koma-square`    |
+| Before / After / 期待 vs 現実    | `2koma-portrait`                     |
+| 短いボケツッコミ                 | `3koma-portrait`                     |
+| 起承転結 / 迷ったらこれ          | **`4koma-portrait`**                 |
+| 段取り・手順を見せる             | `6koma-grid`                         |
+| 密度型・テンポで読ませる         | `9koma-grid`                         |
+| 強い 1 コマ + リアクション       | `freeform-a`                         |
+| 比較 → 結論大ゴマ                | `freeform-b`                         |
+| 横長 (ブログ・プレゼン)          | `4koma-landscape`                    |
+
+詳しくは [`../../design-system/rhythm.md`](../../design-system/rhythm.md) のリズム設計を参照。
+
+---
+
+## ディレクトリ構成
 
 ```
-[シリーズ共通スタイル]
-- シリーズ名: シュンタのクリエイティブラボ日記
-- ジャンル: 日常コメディ・1 枚完結のショート漫画
-- 全体の雰囲気: モダン / ミニマル / 親しみやすい丸み / 日本の Web 漫画調
-
-[配色]
-- ベース 70%: メインブラック #0F0F10 / ダークグレー #2A2A2E
-- ホワイト 20%: #FFFFFF (ハイライト・テキスト)
-- ネオンピンク 10%: #FF2D7A (アクセント・タイトル・主要装飾)
-- シアンブルー 補助: #6EE7F7 (デジタル感・控えめに)
-- 高彩度のオレンジ・緑・黄色は使わない
-
-[線・形]
-- キャラ輪郭: 太いアウトライン (4〜6px 相当)
-- 内側ディテール: 中 (2〜3px 相当)
-- 装飾線: 細 (1〜2px 相当)
-- パネル枠: 大きめの角丸 (16〜24px 相当)
-- 吹き出し: ぷっくりした角丸
-
-[NG]
-- 写真調 / 3D レンダリング調 / 水彩調
-- 過剰なグラデーション
-- リアルな人物写真の質感
-- 細かいクロスハッチング
-- ベンダー名 / モデル名 / ロゴ / 既存企業の文字描画
+meta/image-prompts/
+├── README.md                       ← このファイル (索引)
+│
+├── references/                     ← ① キャラ・内装・スタイルのリファレンス画像生成
+│   ├── 01-char-shunta.md
+│   ├── 02-char-iris.md
+│   ├── 03-char-mika.md
+│   ├── 04-char-takuma.md
+│   ├── 05-char-monaka.md
+│   ├── 06-char-bugmaru.md
+│   ├── 07-lab-interior-wide.md
+│   ├── 08-lab-floor-plan.md
+│   ├── 09-style-guide.md
+│   └── 10-motif-catalog.md
+│
+├── frames/                         ← ② コマ割りフレームの空白テンプレ生成
+│   ├── 1koma-portrait.md
+│   ├── 2koma-portrait.md
+│   ├── 3koma-portrait.md
+│   ├── 4koma-portrait.md           ← まずはこれだけ作れば OK
+│   ├── 6koma-grid.md
+│   ├── 9koma-grid.md
+│   ├── freeform-a.md
+│   ├── freeform-b.md
+│   ├── 1koma-square.md
+│   └── 4koma-landscape.md
+│
+└── episode/                        ← ③ エピソードごとの合成プロンプト
+    └── composition.md              ← シナリオ部分を埋めて使う
 ```
 
 ---
 
-## エピソード合成プロンプトのテンプレ
+## メモ・コツ
 
-各エピソード生成時に組み立てるプロンプト。
-**[ベーススタイル]** をそのまま貼り、**[入力画像]** に参照する画像を列挙し、**[シナリオ]** に各コマの内容を書く。
-
-```
-[ベーススタイル]
-（README.md の「ベーススタイル」をここに貼り付け）
-
-[入力画像]
-- frame: 4-koma-portrait.png  (空白フレーム)
-- char: shunta-ref.png        (キャラリファレンス)
-- char: monaka-ref.png
-- (登場キャラぶん列挙)
-- env: lab-interior-ref.png   (ラボ内装)
-- style: style-guide.png      (色・線・吹き出しのリファレンス)
-
-[出力フォーマット]
-- 出力サイズ: 1024 x 1536 (portrait 2:3)
-- 上記 frame の構造に合わせてコマを描画
-- 1 枚画像で完結
-
-[シナリオ]
-タイトル: <エピソードタイトル>
-ログライン: <1 行>
-
-# コマ 1
-- 場面: ...
-- ゾーン: 執務エリア / 中央 / 和み / 玄関 / 窓側 / 屋外 のいずれか
-- 時刻: 朝 / 昼 / 夕方 / 夜
-- 登場: シュンタ, モナカ
-- 動作・表情: ...
-- 話者: シュンタ
-- 吹き出し: ここに本文のみ
-- キャラ名タグ: シュンタ（左下、ピンク + 白）
-- 効果音 / モノローグ: なし
-
-# コマ 2
-（同形式で繰り返し）
-
-[吹き出しのルール]
-- 各セリフの吹き出しは話者の口元の近くに配置する
-- テイル (尾の三角) は話者の方向を指す
-- 吹き出しの中には「セリフ本文だけ」を入れる。話者名は書かない
-- 各パネル左下にキャラ名タグ（ピンク背景 #FF2D7A + 白文字）を表示
-- 1 パネルに複数話者がいる場合はタグを左下にまとめて並べる
-
-[整合性]
-- キャラの服装・配色・小道具は char リファレンス画像に厳密に従う
-- ラボ内装は env リファレンス画像のレイアウトを尊重する
-```
-
-> 詳細な吹き出しルールは [`../../design-system/speech-bubbles.md`](../../design-system/speech-bubbles.md) も参照。
-
----
-
-## 注意
-
-- **アイリス** は特定の AI ベンダー / モデル名を連想させる造形にしない（抽象シルエット）
-- **バグまる** にセリフを描かせない（効果音「ぴょこ」「ぴゃっ」のみ）
-- **モナカ** に人語を喋らせない（鳴き声「わふっ」「くぅーん」のみ）
-- 既存企業 / プロダクトのロゴ・名前を画面に出さない
+- **キャラ 6 人ぶんは 1 体ずつ別々に生成**する。まとめて指示するとディテールが崩れやすい
+- **同じ ChatGPT スレッドで生成し続ける** とキャラの一貫性が保ちやすい
+- **生成後に必ずチェック**: 既存企業のロゴ / バグまるの口 / モナカの人語 などが混入していないか
+- 気に入った構図が出たら **そのまま `assets/` にコミット**。差し替えはまた PR で
 
 ## 関連ドキュメント
 

@@ -79,7 +79,7 @@ cp -r episodes/_template episodes/0001-your-slug
 | 番号 | スラッグ                  | タイトル                              | season | arc        | status |
 | ---- | ------------------------- | ------------------------------------- | ------ | ---------- | ------ |
 | 0001 | monaka-asa-no-sanpo       | 朝の散歩、いつもの儀式                 | S1     | standalone | ready  |
-| 0002 | iris-kidou                | コーヒーが鳴ると、アイリスが起きる    | S1     | standalone | draft  |
+| 0002 | iris-kidou                | 起動完了しました、たぶん              | S1     | standalone | draft  |
 | 0003 | design-battle             | それ、ダサくない？                    | S1     | main       | draft  |
 | 0004 | bugmaru-houga             | コードの隅で、何かが動いた             | S1     | bugmaru    | draft  |
 | 0005 | atode-yaru                | 「あとで」の塔                         | S1     | standalone | draft  |
